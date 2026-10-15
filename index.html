@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pixel Spring Lab — Buy developer tools</title>
+  <meta name="description" content="Git worktrees, ASH security, GitHub ops, and freelancer skill packs from Pixel Spring LLC. Instant checkout via Stripe.">
+  <link rel="canonical" href="https://robhybrid.github.io/pixel-spring-shop/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #12201a;
+      --muted: #3d5348;
+      --paper: #e8f0ea;
+      --glow: #b8d4c4;
+      --accent: #0f6b4c;
+      --accent-ink: #f4fbf7;
+      --line: rgba(18, 32, 26, 0.14);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: "IBM Plex Sans", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, var(--glow), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, #d5e6dc, transparent 50%),
+        linear-gradient(180deg, #f3f7f4 0%, var(--paper) 45%, #dfeae3 100%);
+    }
+    main {
+      width: min(920px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+    .brand {
+      font-family: Fraunces, Georgia, serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 0 0.75rem;
+    }
+    .lede {
+      max-width: 36rem;
+      margin: 0 0 2.5rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+    .catalog { display: grid; gap: 0; }
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem 1.5rem;
+      align-items: center;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .item:last-child { border-bottom: 1px solid var(--line); }
+    .item h2 {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin: 0 0 0.35rem;
+    }
+    .item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 0.98rem;
+    }
+    .price {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .buy {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 6.5rem;
+      padding: 0.7rem 1.1rem;
+      border-radius: 0.35rem;
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .buy:hover { filter: brightness(1.08); }
+    .buy:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .actions { display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; }
+    footer {
+      margin-top: 2.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    footer a { color: var(--accent); }
+    @media (max-width: 640px) {
+      .item { grid-template-columns: 1fr; }
+      .actions { align-items: flex-start; flex-direction: row; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 class="brand">Pixel Spring Lab</h1>
+    <p class="lede">
+      Developer skills and security tooling from Pixel Spring LLC — sold as downloads and bookable setup.
+      Checkout is Stripe. After payment, enter your GitHub username so we can invite you to the private downloads repo.
+    </p>
+    <div class="catalog" id="catalog"></div>
+    <footer>
+      <p>Pixel Spring LLC · Austin, TX · <a href="mailto:rob@robhybrid.com">rob@robhybrid.com</a> · <a href="https://pixelspring.co">pixelspring.co</a></p>
+      <p>Live Stripe checkout. Digital packs fulfill via GitHub invite; setup services schedule by email.</p>
+    </footer>
+  </main>
+  <script type="module">
+    const products = [
+      { id: "git-worktrees", name: "Git Worktree Helpers", blurb: "Parallel branches and agent worktrees without stash hell.", price: 49, buyUrl: "https://buy.stripe.com/14A14nawTbzI1FNayMeZ208" },
+      { id: "security-ash", name: "ASH Security Analyzer Pack", blurb: "Defensive ASH skill + config for PR security triage.", price: 149, buyUrl: "https://buy.stripe.com/dRm14nawT9rAacjeP2eZ209" },
+      { id: "github-ops", name: "GitHub Ops Skill", blurb: "gh + API workflows for PRs, checks, labels, releases.", price: 79, buyUrl: "https://buy.stripe.com/7sY7sLfRdeLU7070YceZ20a" },
+      { id: "github-ops-mcp", name: "GitHub Ops Skill + MCP", blurb: "Skill pack plus MCP server for agent-driven GitHub ops.", price: 249, buyUrl: "https://buy.stripe.com/6oUfZheN9eLU5W36iweZ20b" },
+      { id: "freelancer-ops-trio", name: "Freelancer Ops Skill Trio", blurb: "Claude / OpenClaw / Cursor packs for proposals and cashflow.", price: 129, buyUrl: "https://buy.stripe.com/cNi5kDgVhgU22JR5eseZ20c" },
+      { id: "consultant-dev-duo", name: "Consultant Dev Duo", blurb: "Two high-leverage packs for client delivery work.", price: 99, buyUrl: "https://buy.stripe.com/6oUbJ1gVh5bk2JR7mAeZ20d" },
+      { id: "setup-service", name: "OpenClaw / Agent Setup", blurb: "Bookable hardening and first-time gateway wiring.", price: 199, buyUrl: "https://buy.stripe.com/8x27sL48vbzI2JR6iweZ20e" },
+      { id: "ash-regulated-setup", name: "ASH Regulated Setup", blurb: "Guided ASH rollout for regulated buyer environments.", price: 499, buyUrl: "https://buy.stripe.com/00weVdfRd5bkgAHfT6eZ20f" }
+    ];
+    const root = document.getElementById("catalog");
+    for (const p of products) {
+      const el = document.createElement("article");
+      el.className = "item";
+      el.innerHTML = `
+        <div>
+          <h2>${p.name}</h2>
+          <p>${p.blurb}</p>
+        </div>
+        <div class="actions">
+          <span class="price">$${p.price}</span>
+          <a class="buy" href="${p.buyUrl}" target="_blank" rel="noopener">Buy</a>
+        </div>`;
+      root.appendChild(el);
+    }
+  </script>
+</body>
+</html>
