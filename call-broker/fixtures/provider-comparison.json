@@ -1,0 +1,155 @@
+{
+  "generatedAt": "2026-10-18T23:05:42.024Z",
+  "mode": "live",
+  "markup": 1.5,
+  "models": {
+    "ringahuman": {
+      "id": "ringahuman",
+      "name": "Ring a Human",
+      "model": "per_minute",
+      "perMinuteUsd": 1,
+      "minimumMinutes": 2,
+      "monthlyFeeUsd": 0,
+      "platformFeePct": 0,
+      "processingFeePct": 0,
+      "firstDialSlaMinutes": 5,
+      "countryBias": [
+        "US"
+      ],
+      "agentApi": "rest+mcp",
+      "sandbox": true,
+      "notes": "Human-dialed US calls, local 9–8 hours, DNC enforced. Best for TCPA-sensitive speed-to-lead."
+    },
+    "gohirehumans": {
+      "id": "gohirehumans",
+      "name": "GoHireHumans",
+      "model": "fixed_budget_marketplace",
+      "platformFeePct": 0.01,
+      "processingFeePct": 0.03,
+      "monthlyFeeUsd": 0,
+      "examplePhoneTaskUsd": 79,
+      "firstDialSlaMinutes": null,
+      "countryBias": [
+        "global"
+      ],
+      "agentApi": "rest+mcp",
+      "sandbox": false,
+      "notes": "Fixed-budget jobs / service orders. No phone inventory today (0 phone_call listings). Good for one-off research calls when a worker is available."
+    },
+    "ringg": {
+      "id": "ringg",
+      "name": "Ringg",
+      "model": "marketplace_negotiated",
+      "examplePerHourUsd": 55,
+      "examplePerMeetingUsd": 45,
+      "monthlyFeeUsd": null,
+      "platformFeePct": null,
+      "firstDialSlaMinutes": null,
+      "countryBias": [
+        "global"
+      ],
+      "agentApi": "none_public",
+      "sandbox": false,
+      "notes": "B2B cold-caller marketplace. Pay per hour / meeting / deal. No agent REST/MCP found — human onboarding required."
+    },
+    "phonedo": {
+      "id": "phonedo",
+      "name": "Phone.do",
+      "model": "bpo_agent_rates",
+      "monthlyFeeUsd": null,
+      "platformFeePct": null,
+      "firstDialSlaMinutes": null,
+      "countryBias": [
+        "global"
+      ],
+      "agentApi": "unknown",
+      "sandbox": false,
+      "notes": "Decentralized BPO. agents.phone.do was intermittently unavailable (CDN 530). Treat as manual integration until API docs are confirmed."
+    }
+  },
+  "scenarios": [
+    {
+      "scenario": "US warm lead, voicemail (2 min)",
+      "ringahuman": 2,
+      "ringahumanClient": 3,
+      "gohirehumans": 82.16,
+      "gohirehumansClient": 123.24,
+      "ringgPerMeeting": 45,
+      "winner": "ringahuman"
+    },
+    {
+      "scenario": "US warm lead, 6 billed minutes (booked)",
+      "ringahuman": 6,
+      "ringahumanClient": 9,
+      "gohirehumans": 82.16,
+      "gohirehumansClient": 123.24,
+      "ringgPerMeeting": 45,
+      "winner": "ringahuman"
+    },
+    {
+      "scenario": "One-off research call, flexible timing",
+      "ringahuman": 6,
+      "ringahumanClient": 9,
+      "gohirehumans": 82.16,
+      "gohirehumansClient": 123.24,
+      "ringgPerMeeting": 45,
+      "winner": "ringahuman"
+    }
+  ],
+  "live": {
+    "ringahuman": {
+      "plan": "free",
+      "card_on_file": false,
+      "free_calls_remaining": 2,
+      "pricing": {
+        "per_minute_cents": 100,
+        "minimum_minutes_per_call": 2,
+        "monthly_fee_cents": 0,
+        "first_dial_sla_minutes": 5
+      },
+      "new_tasks_will_dispatch": true
+    },
+    "gohirehumans": {
+      "phone_call_services": 0,
+      "call_search_services": 1,
+      "phone_call_jobs": 0,
+      "virtual_assistant_services": 0,
+      "sample_call_search": [
+        {
+          "id": 67,
+          "title": "Spanish Language & Logic Oracle for AI Agents",
+          "price": 30,
+          "category": "writing"
+        }
+      ]
+    },
+    "ringg": {
+      "ok": true,
+      "status": 200
+    },
+    "phonedo": {
+      "ok": true,
+      "results": [
+        {
+          "url": "https://phone.do/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "url": "https://agents.phone.do/en",
+          "status": 530,
+          "ok": false
+        }
+      ]
+    }
+  },
+  "verdict": {
+    "bestSpeedToLead": "ringahuman",
+    "bestPriceUsWarmLead": "ringahuman",
+    "bestFlexibleGlobal": "gohirehumans",
+    "needsHumanOnboarding": [
+      "ringg",
+      "phonedo"
+    ]
+  }
+}
