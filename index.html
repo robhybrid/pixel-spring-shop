@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Pixel Spring Lab — Developer tools &amp; skill packs</title>
-  <meta name="description" content="Buy Pixel Spring LLC developer tools: git worktrees, ASH security, GitHub ops, and freelancer skill packs. Live Stripe checkout.">
+  <title>Pixel Spring Lab — UX, security, AI agents &amp; developer tools</title>
+  <meta name="description" content="Pixel Spring LLC: UX design, defensive security analysis, AI/agent delivery, git worktrees, ASH security, and GitHub ops. Live Stripe checkout and bookable services.">
   <meta name="author" content="Pixel Spring, LLC">
   <meta name="theme-color" content="#0a0e14">
   <link rel="canonical" href="https://robhybrid.github.io/pixel-spring-shop/">
@@ -13,8 +13,8 @@
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://robhybrid.github.io/pixel-spring-shop/">
-  <meta property="og:title" content="Pixel Spring Lab — Developer tools &amp; skill packs">
-  <meta property="og:description" content="Git worktrees, ASH security, GitHub ops, and freelancer packs from Pixel Spring LLC.">
+  <meta property="og:title" content="Pixel Spring Lab — UX, security, AI agents &amp; developer tools">
+  <meta property="og:description" content="UX audits, security analysis, multi-agent/MCP delivery, ASH security, and GitHub ops from Pixel Spring LLC.">
 
   <link rel="stylesheet" href="css/hybrid.css">
   <link rel="stylesheet" href="css/shop.css">
@@ -43,10 +43,10 @@
       <section class="shop-hero" aria-labelledby="shop-title">
         <div class="inner">
           <p class="badge">Pixel Spring Lab</p>
-          <h1 id="shop-title">Developer tools built from real client work</h1>
+          <h1 id="shop-title">UX, security, and AI delivery from real client work</h1>
           <p class="shop-lead">
-            Skills, security scanning, and GitHub automation — sold as downloads and bookable setup.
-            Checkout is Stripe. Enter your GitHub username at payment so we can invite you to the private downloads repo.
+            Bookable UX redesigns and defensive security analysis, plus AI-as-a-service (agents, MCP, RAG) and skill packs.
+            Checkout is Stripe for packs; services schedule by email. Enter your GitHub username at payment for private downloads.
           </p>
         </div>
       </section>
@@ -55,7 +55,7 @@
         <div class="inner">
           <div class="block-head">
             <h2>Catalog</h2>
-            <p>One-time purchases. Digital packs fulfill via GitHub invite; setup services schedule by email.</p>
+            <p>One-time purchases. Digital packs fulfill via GitHub invite; UX, security, and AI services schedule by email.</p>
           </div>
           <div class="catalog" id="catalog"></div>
         </div>
@@ -64,7 +64,7 @@
       <section class="cta">
         <div class="inner cta-box">
           <h2>Questions before you buy?</h2>
-          <p>Email for scope, licensing, or regulated ASH setup.</p>
+          <p>Email for UX scope, security review boundaries, AI delivery, licensing, or regulated ASH setup.</p>
           <a href="mailto:rob@robhybrid.com" class="btn btn-fill btn-lg">rob@robhybrid.com</a>
           <p class="cta-meta">
             <a href="https://pixelspring.co/">pixelspring.co</a> ·
@@ -89,6 +89,18 @@
     document.getElementById("year").textContent = String(new Date().getFullYear());
 
     const products = [
+      { id: "ux-audit-redesign", name: "UX Audit & Redesign Sprint", blurb: "Heuristic audit, stakeholder synthesis, and prioritized redesign — LeanUX + energy-trader redesign track record.", price: 499, buyUrl: "mailto:rob@robhybrid.com?subject=UX%20Audit%20%26%20Redesign%20Sprint" },
+      { id: "design-system", name: "Design System / Living Style Guide", blurb: "Tokens, component inventory, and living style guide for React teams (Cloudscape/Venue experience).", price: 399, buyUrl: "mailto:rob@robhybrid.com?subject=Design%20System%20%2F%20Living%20Style%20Guide" },
+      { id: "ui-component-pack", name: "React / Cloudscape UI Component Pack", blurb: "Production React/TypeScript UI components aligned to your design system.", price: 299, buyUrl: "mailto:rob@robhybrid.com?subject=React%20%2F%20Cloudscape%20UI%20Component%20Pack" },
+      { id: "security-analysis", name: "Security Analysis & Vulnerability Remediation", blurb: "Defensive full-stack analysis, auth-path audit, prioritized fixes and patch PRs.", price: 399, buyUrl: "mailto:rob@robhybrid.com?subject=Security%20Analysis%20%26%20Vulnerability%20Remediation" },
+      { id: "auth-fail-closed", name: "Auth Fail-Closed Redesign", blurb: "Unauthenticated APIs fail closed (401) while browsers still reach login — ALB/FastAPI pattern.", price: 249, buyUrl: "mailto:rob@robhybrid.com?subject=Auth%20Fail-Closed%20Redesign" },
+      { id: "hipaa-architecture", name: "HIPAA-Aware Architecture Review", blurb: "Data-flow, auth, logging, and deploy hardening review for healthcare/telehealth systems.", price: 599, buyUrl: "mailto:rob@robhybrid.com?subject=HIPAA-Aware%20Architecture%20Review" },
+      { id: "multi-agent", name: "Multi-Agent Orchestration Setup", blurb: "Parallel specialized agents with timeouts and status monitoring — production AWS Marketplace pattern.", price: 499, buyUrl: "mailto:rob@robhybrid.com?subject=Multi-Agent%20Orchestration%20Setup" },
+      { id: "mcp-server", name: "Custom MCP Server Build", blurb: "Production MCP server (Python or Node) exposing tools to your agent runtime.", price: 349, buyUrl: "mailto:rob@robhybrid.com?subject=Custom%20MCP%20Server%20Build" },
+      { id: "rag-chatbot", name: "RAG / Knowledge Chatbot", blurb: "Team source-of-truth chatbot over design systems, runbooks, or product docs.", price: 449, buyUrl: "mailto:rob@robhybrid.com?subject=RAG%20%2F%20Knowledge%20Chatbot" },
+      { id: "ai-code-review", name: "AI Code Review Automation", blurb: "Agents for comment resolution, build diagnostics, and CR maintenance.", price: 299, buyUrl: "mailto:rob@robhybrid.com?subject=AI%20Code%20Review%20Automation" },
+      { id: "fastapi-sprint", name: "FastAPI / API Design Sprint", blurb: "API design + FastAPI implementation/migration with OpenAPI docs and contract tests.", price: 349, buyUrl: "mailto:rob@robhybrid.com?subject=FastAPI%20%2F%20API%20Design%20Sprint" },
+      { id: "dashboard-build", name: "D3 / WebGL Dashboard Build", blurb: "Real-time operational dashboards for telemetry, provisioning, or trading-desk style data.", price: 399, buyUrl: "mailto:rob@robhybrid.com?subject=D3%20%2F%20WebGL%20Dashboard%20Build" },
       { id: "git-worktrees", name: "Git Worktree Helpers", blurb: "Parallel branches and agent worktrees without stash hell.", price: 49, buyUrl: "https://buy.stripe.com/14A14nawTbzI1FNayMeZ208" },
       { id: "security-ash", name: "ASH Security Analyzer Pack", blurb: "Defensive ASH skill + config for PR security triage.", price: 149, buyUrl: "https://buy.stripe.com/dRm14nawT9rAacjeP2eZ209" },
       { id: "github-ops", name: "GitHub Ops Skill", blurb: "gh + API workflows for PRs, checks, labels, releases.", price: 79, buyUrl: "https://buy.stripe.com/7sY7sLfRdeLU7070YceZ20a" },
