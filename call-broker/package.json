@@ -1,0 +1,16 @@
+{
+  "name": "@pixel-spring/call-broker",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Speed-to-lead human call broker: routes warm leads to Ring a Human, GoHireHumans, Ringg, and Phone.do with sandbox-first testing.",
+  "scripts": {
+    "sandbox": "node scripts/sandbox-demo.mjs",
+    "compare": "node scripts/compare-providers.mjs",
+    "serve": "node src/server.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
